@@ -6,6 +6,8 @@ import { Midi } from '@tonejs/midi'
 import PlayIcon from './functions/PlayIcon.js';
 import TriangleGlyph from './classes/TriangleGlyph.js';
 import RectangleGlyph from './classes/RectangleGlyph.js';
+import InfinityGlyph from './classes/InfinityGlyph.js';
+import EllipticalGlyph from './classes/EllipticalGlyph.js';
 
 import audio from "../audio/glyphs-no-1.ogg";
 import midi from "../audio/glyphs-no-1.mid";
@@ -35,8 +37,12 @@ const P5SketchWithAudio = () => {
                     console.log(result);
                     const noteSet1 = result.tracks[0].notes; // Synth 1 - metal swell
                     const noteSet2 = result.tracks[3].notes; // Synth 2 - DnK - Glass
+                    const noteSet3 = result.tracks[4].notes; // Synth 3 - DreamPatch 3
+                    const noteSet4 = result.tracks[5].notes; // Synth 4 - Groovy
                     p.scheduleCueSet(noteSet1, 'executeCueSet1');
                     p.scheduleCueSet(noteSet2, 'executeCueSet2');
+                    p.scheduleCueSet(noteSet3, 'executeCueSet3');
+                    p.scheduleCueSet(noteSet4, 'executeCueSet4');
                     p.audioLoaded = true;
                     document.getElementById("loader").classList.add("loading--complete");
                     document.getElementById("play-icon").classList.remove("fade-out");
@@ -86,7 +92,7 @@ const P5SketchWithAudio = () => {
 
         p.executeCueSet1 = (note) => {
             p.animatedGlyphs.push(
-                new TriangleGlyph(p, p.width/2, p.height/2, p.width/16)
+                new InfinityGlyph(p, p.width/2, p.height/2, p.width/16)
             );
         }
 
@@ -94,6 +100,19 @@ const P5SketchWithAudio = () => {
             p.animatedGlyphs.push(
                 new RectangleGlyph(p, p.width/2, p.height/2, p.width/16)
             );
+        }
+
+        p.executeCueSet3 = (note) => {
+            p.animatedGlyphs.push(
+                new TriangleGlyph(p, p.width/2, p.height/2, p.width/16)
+            );
+        }
+
+        p.executeCueSet4 = (note) => {
+            p.animatedGlyphs.push(
+                new EllipticalGlyph(p, p.width/2, p.height/2, p.width/16)
+            );
+            console.log(p.animatedGlyphs);
         }
 
         p.mousePressed = () => {
