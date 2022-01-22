@@ -2,11 +2,11 @@ export default class AnimatedGlyph {
     constructor(p5, x, y, width) {
         this.p = p5;
         this.hue = this.p.random(0, 360);
-        this.destination = this.p.createVector(x, y);
-        this.width = width;
+        this.origin = this.p.createVector(x, y);
+        this.width = 0;
         this.maxWidth = width;
         this.rotation = 0;
-        this.lifeTime = this.p.random(10000, 20000);
+        this.lifeTime = this.p.random(10000, 18000);
         this.startTime = this.p.millis();
         this.endTime = this.startTime + this.lifeTime;
         
@@ -15,23 +15,26 @@ export default class AnimatedGlyph {
         this.direction = this.p.random(['left', 'right', 'up', 'down']);
         switch (this.direction) {
             case 'left':
-                this.origin = this.p.createVector(0, randY);
+                this.destination = this.p.createVector(0, randY);
                 break;
             case 'right':
-                this.origin = this.p.createVector(this.p.width, randY);
+                this.destination = this.p.createVector(this.p.width, randY);
                 break;
             case 'up':
-                this.origin = this.p.createVector(randX, 0);
+                this.destination = this.p.createVector(randX, 0);
                 break;
             case 'down':
-                this.origin = this.p.createVector(randX, this.p.height);
+                this.destination = this.p.createVector(randX, this.p.height);
                 break;
         }
     }
 
     update() {
-        if(this.width > 0){
-            this.width = this.width - (Math.random() / 4);
+        // if(this.width > 0){
+        //     this.width = this.width - (Math.random() / 4);
+        // }
+        if(this.width < this.maxWidth) {
+            this.width = this.width + (Math.random() / 4);
         }
         this.rotation++;
     }
