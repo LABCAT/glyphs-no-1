@@ -6,7 +6,7 @@ export default class AnimatedGlyph {
         this.width = 0;
         this.maxWidth = width;
         this.rotation = 0;
-        this.lifeTime = this.p.random(10000, 18000);
+        this.lifeTime = this.p.random(5000, 15000);
         this.startTime = this.p.millis();
         this.endTime = this.startTime + this.lifeTime;
         

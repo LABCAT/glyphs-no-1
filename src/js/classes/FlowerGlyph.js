@@ -21,7 +21,7 @@ export default class FlowerGlyph extends AnimatedGlyph {
             for (let i = 0; i < 12; i ++) {
                 this.p.stroke(this.hueSet[i % 4], 100, 100);
                 this.p.fill(this.hueSet[i % 4], 100, 100, 0.25);
-                this.p.ellipse(0, 30, 20, 80);
+                this.p.ellipse(0, 30, this.width / 4, this.width);
                 this.p.rotate(30);
             }
             this.p.rotate(-this.rotation);

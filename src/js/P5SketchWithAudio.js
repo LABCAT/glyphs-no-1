@@ -10,6 +10,7 @@ import InfinityGlyph from './classes/InfinityGlyph.js';
 import EllipticalGlyph from './classes/EllipticalGlyph.js';
 import FlowerGlyph from './classes/FlowerGlyph.js';
 import StarGlyph from './classes/StarGlyph.js';
+import LABCATGlyph from './classes/LABCATGlyph.js';
 
 import audio from "../audio/glyphs-no-1.ogg";
 import midi from "../audio/glyphs-no-1.mid";
@@ -42,13 +43,15 @@ const P5SketchWithAudio = () => {
                     const noteSet3 = result.tracks[4].notes; // Synth 3 - DreamPatch 3
                     const noteSet4 = result.tracks[5].notes; // Synth 4 - Groovy
                     const noteSet5 = result.tracks[1].notes; // Sampler 1 - GRANDPIANO
-                    const noteSet6 = result.tracks[6].notes; // Synth 6 - SynthBass2
+                    const noteSet6 = result.tracks[7].notes; // Synth 5 - Sweep Lead
+                    const noteSet7 = result.tracks[6].notes; // Synth 6 - SynthBass2
                     p.scheduleCueSet(noteSet1, 'executeCueSet1');
                     p.scheduleCueSet(noteSet2, 'executeCueSet2');
                     p.scheduleCueSet(noteSet3, 'executeCueSet3');
                     p.scheduleCueSet(noteSet4, 'executeCueSet4');
                     p.scheduleCueSet(noteSet5, 'executeCueSet5');
                     p.scheduleCueSet(noteSet6, 'executeCueSet6');
+                    p.scheduleCueSet(noteSet7, 'executeCueSet7');
                     p.audioLoaded = true;
                     document.getElementById("loader").classList.add("loading--complete");
                     document.getElementById("play-icon").classList.remove("fade-out");
@@ -125,13 +128,19 @@ const P5SketchWithAudio = () => {
 
         p.executeCueSet5 = (note) => {
             p.animatedGlyphs.push(
-                new FlowerGlyph(p, p.width/2, p.height/2, p.width/16)
+                new StarGlyph(p, p.width/2, p.height/2, p.width/16)
             );
         }
 
         p.executeCueSet6 = (note) => {
             p.animatedGlyphs.push(
-                new StarGlyph(p, p.width/2, p.height/2, p.width/16)
+                new FlowerGlyph(p, p.width/2, p.height/2, p.width/16)
+            );
+        }
+
+        p.executeCueSet7 = (note) => {
+            p.animatedGlyphs.push(
+                new LABCATGlyph(p, p.width/2, p.height/2, p.width/16)
             );
         }
 

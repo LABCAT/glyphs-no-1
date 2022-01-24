@@ -17,12 +17,14 @@ export default class StarGlyph extends AnimatedGlyph {
 
             let angle = this.p.TWO_PI / 5;
             let halfAngle = angle / 2.0;
+            this.p.push();
             this.p.translate(pos.x, pos.y);
             this.p.rotate(this.rotation);
             this.p.strokeWeight(2);
             this.p.stroke(this.hueSet[0], 100, 100);
             this.p.fill(this.hueSet[0], 100, 100, 0.25);
             this.p.angleMode(this.p.RADIANS);
+            this.p.scale(0.2 + 1 / this.maxWidth * this.width)
             this.p.beginShape();
             for (let a = 0; a < this.p.TWO_PI; a += angle) {
                 let sx = 0 + this.p.cos(a) * 70;
@@ -36,6 +38,7 @@ export default class StarGlyph extends AnimatedGlyph {
             this.p.angleMode(this.p.DEGREES);
             this.p.rotate(-this.rotation);
             this.p.translate(-pos.x, -pos.y);
+            this.p.pop();
         }
     }
 }
