@@ -37,7 +37,6 @@ const P5SketchWithAudio = () => {
         p.loadMidi = () => {
             Midi.fromUrl(midi).then(
                 function(result) {
-                    console.log(result);
                     const noteSet1 = result.tracks[0].notes; // Synth 1 - metal swell
                     const noteSet2 = result.tracks[3].notes; // Synth 2 - DnK - Glass
                     const noteSet3 = result.tracks[4].notes; // Synth 3 - DreamPatch 3
@@ -45,6 +44,7 @@ const P5SketchWithAudio = () => {
                     const noteSet5 = result.tracks[1].notes; // Sampler 1 - GRANDPIANO
                     const noteSet6 = result.tracks[7].notes; // Synth 5 - Sweep Lead
                     const noteSet7 = result.tracks[6].notes; // Synth 6 - SynthBass2
+                    const controlChanges = Object.assign({},result.tracks[8].controlChanges); // Mixer Master Volumne
                     p.scheduleCueSet(noteSet1, 'executeCueSet1');
                     p.scheduleCueSet(noteSet2, 'executeCueSet2');
                     p.scheduleCueSet(noteSet3, 'executeCueSet3');
@@ -52,6 +52,7 @@ const P5SketchWithAudio = () => {
                     p.scheduleCueSet(noteSet5, 'executeCueSet5');
                     p.scheduleCueSet(noteSet6, 'executeCueSet6');
                     p.scheduleCueSet(noteSet7, 'executeCueSet7');
+                    p.scheduleCueSet(controlChanges[Object.keys(controlChanges)[0]], 'executeCueSet8');
                     p.audioLoaded = true;
                     document.getElementById("loader").classList.add("loading--complete");
                     document.getElementById("play-icon").classList.remove("fade-out");
@@ -88,9 +89,11 @@ const P5SketchWithAudio = () => {
             p.angleMode(p.DEGREES)
         }
 
+        p.bgOpacity = 0;
+
         p.draw = () => {
             if(p.audioLoaded && p.song.isPlaying()){
-                p.background(0);
+                p.background(0, 0, 0, p.bgOpacity);
                 for (let i = 0; i < p.animatedGlyphs.length; i++) {
                     const glyph = p.animatedGlyphs[i];
                     glyph.update();
@@ -136,12 +139,24 @@ const P5SketchWithAudio = () => {
             p.animatedGlyphs.push(
                 new FlowerGlyph(p, p.width/2, p.height/2, p.width/16)
             );
+
+            p.animatedGlyphs.push(
+                new FlowerGlyph(p, p.width/2, p.height/2, p.width/16)
+            );
+
+            p.animatedGlyphs.push(
+                new FlowerGlyph(p, p.width/2, p.height/2, p.width/16)
+            );
         }
 
         p.executeCueSet7 = (note) => {
             p.animatedGlyphs.push(
                 new LABCATGlyph(p, p.width/2, p.height/2, p.width/16)
             );
+        }
+
+        p.executeCueSet8 = (note) => {
+            p.bgOpacity = 0.3 - (note.value / 2);
         }
 
         p.mousePressed = () => {

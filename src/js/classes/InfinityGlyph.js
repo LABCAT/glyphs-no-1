@@ -12,10 +12,10 @@ export default class TriangleGlyph extends AnimatedGlyph {
                 this.p.push();
                 this.p.translate(pos.x, pos.y);
                 this.p.rotate(this.rotation);
-                this.p.strokeWeight(8);
+                this.p.strokeWeight(16);
                 this.p.stroke(this.hue, 100, 100);
-                this.p.fill(this.hue, 100, 100, 0.25);
-                this.p.scale(0.75);
+                this.p.fill(this.hue, 100, 100, 0.1);
+                this.p.scale(0.4);
                 this.p.beginShape();
                 this.p.curveVertex(0, 0);
                 this.p.curveVertex(0, 0);

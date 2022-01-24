@@ -27,16 +27,20 @@ export default class AnimatedGlyph {
                 this.destination = this.p.createVector(randX, this.p.height);
                 break;
         }
+
+        this.clockwiseRotation = Math.random() < 0.5;
     }
 
     update() {
-        // if(this.width > 0){
-        //     this.width = this.width - (Math.random() / 4);
-        // }
         if(this.width < this.maxWidth) {
             this.width = this.width + (Math.random() / 4);
         }
-        this.rotation++;
+        if(this.clockwiseRotation){
+            this.rotation++;
+        }
+        else {
+            this.rotation--;
+        }
     }
 
     draw() {
