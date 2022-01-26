@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/glyphs-no-1/static/css/main.a60116e0.chunk.css",
+    "main.js": "/glyphs-no-1/static/js/main.5f330cab.chunk.js",
+    "main.js.map": "/glyphs-no-1/static/js/main.5f330cab.chunk.js.map",
+    "runtime-main.js": "/glyphs-no-1/static/js/runtime-main.8da0f4dc.js",
+    "runtime-main.js.map": "/glyphs-no-1/static/js/runtime-main.8da0f4dc.js.map",
+    "static/js/2.6e52d5fb.chunk.js": "/glyphs-no-1/static/js/2.6e52d5fb.chunk.js",
+    "static/js/2.6e52d5fb.chunk.js.map": "/glyphs-no-1/static/js/2.6e52d5fb.chunk.js.map",
+    "index.html": "/glyphs-no-1/index.html",
+    "static/css/main.a60116e0.chunk.css.map": "/glyphs-no-1/static/css/main.a60116e0.chunk.css.map",
+    "static/js/2.6e52d5fb.chunk.js.LICENSE.txt": "/glyphs-no-1/static/js/2.6e52d5fb.chunk.js.LICENSE.txt",
+    "static/media/glyphs-no-1.4e7bab48.ogg": "/glyphs-no-1/static/media/glyphs-no-1.4e7bab48.ogg",
+    "static/media/glyphs-no-1.73f914f8.mid": "/glyphs-no-1/static/media/glyphs-no-1.73f914f8.mid"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8da0f4dc.js",
+    "static/js/2.6e52d5fb.chunk.js",
+    "static/css/main.a60116e0.chunk.css",
+    "static/js/main.5f330cab.chunk.js"
+  ]
+}
